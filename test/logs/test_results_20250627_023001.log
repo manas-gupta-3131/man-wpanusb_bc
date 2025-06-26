@@ -1,0 +1,72 @@
+
+==========================================================
+WPANUSB Extended API Mock Test Suite
+BeagleConnect Freedom - Non-Hardware Testing
+==========================================================
+
+[INF] === Testing get_extended_addr ===
+[DBG] Reading IEEE address from CC1352 FCFG1 registers
+[INF] Read IEEE address from hardware: 00:12:4b:ff:fe:12:34:56
+[INF] ✓ Hardware IEEE address test PASSED
+[INF] ✓ Valid TI OUI detected
+[WRN] No valid IEEE address in hardware registers, generating fallback
+[WRN] Generated fallback IEEE address: 02:be:ac:00:7e:38:59:41
+[INF] ✓ Fallback address generation test PASSED
+[INF] ✓ Locally administered bit set correctly
+[INF] ✓ Unicast address confirmed
+[ERR] Invalid address pointer
+[INF] ✓ NULL pointer validation test PASSED
+
+[INF] === Testing get_supported_channels ===
+[DBG] Page 0 (2.4GHz) channels: 0x07fff800
+[INF] ✓ 2.4GHz channels test PASSED: 0x07fff800
+[INF] ✓ Expected 2.4GHz channel mask confirmed
+[DBG] Page 2 (Sub-GHz) channels: 0x000007ff
+[INF] ✓ Sub-GHz channels test PASSED: 0x000007ff
+[WRN] Sub-GHz not supported in this build
+[INF] ✓ Sub-GHz disabled test PASSED (correctly returned -ENOTSUP)
+[ERR] Unsupported channel page: 99
+[INF] ✓ Invalid page validation test PASSED
+[ERR] Invalid channels pointer
+[INF] ✓ NULL pointer validation test PASSED
+
+[INF] === Testing get_tx_power_levels ===
+[DBG] TX power range: -20 to 14 dBm, 8 steps
+[INF] ✓ TX power levels (Sub-GHz) test PASSED
+[INF]   Range: -20 to 14 dBm, 8 steps
+[INF] ✓ Expected Sub-GHz power range confirmed
+[INF]   Step 0: -20 dBm
+[INF]   Step 1: -15 dBm
+[INF]   Step 2: -10 dBm
+[INF]   Step 3: -5 dBm
+[INF]   Step 4: 0 dBm
+[INF]   Step 5: 5 dBm
+[INF]   Step 6: 10 dBm
+[INF]   Step 7: 14 dBm
+[DBG] TX power range: -20 to 5 dBm, 6 steps
+[INF] ✓ TX power levels (2.4GHz only) test PASSED
+[INF]   Range: -20 to 5 dBm, 6 steps
+[INF] ✓ Expected 2.4GHz power range confirmed
+[ERR] Invalid power level parameters
+[INF] ✓ NULL min_power validation test PASSED
+
+[INF] === Testing get_device_capabilities ===
+[INF] Device capabilities: 0x000003ff
+[INF] ✓ Device capabilities (Sub-GHz) test PASSED: 0x000003ff
+[INF]   ✓ 2.4GHz support confirmed
+[INF]   ✓ Sub-GHz support confirmed
+[INF]   ✓ Multi-page support confirmed
+[INF]   ✓ Promiscuous mode support confirmed
+[INF]   ✓ CSMA-CA support confirmed
+[INF]   ✓ TX power control support confirmed
+[INF] Device capabilities: 0x000003f9
+[INF] ✓ Device capabilities (2.4GHz only) test PASSED: 0x000003f9
+[INF]   ✓ 2.4GHz support confirmed
+[INF]   ✓ Sub-GHz correctly disabled
+[INF]   ✓ Multi-page correctly disabled
+[ERR] Invalid capabilities pointer
+[INF] ✓ NULL pointer validation test PASSED
+
+==========================================================
+Extended API Mock Test Suite Complete
+==========================================================
