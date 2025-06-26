@@ -21,6 +21,7 @@ LOG_MODULE_REGISTER(wpanusb_bc, LOG_LEVEL_INF);
 #include <drivers/gpio.h>
 
 #include <stdio.h>
+#include "wpanusb_extended.h"
 
 #define LED0_NODE DT_ALIAS(led0)
 #define LED0	DT_GPIO_LABEL(LED0_NODE, gpios)
@@ -474,7 +475,16 @@ static void wpan_process_ctrl_frame(struct wpan_driver_context *wpan)
 		ret = set_pan_id(wpan);
 		break;
 	case GET_SUPPORTED_CHANNELS:
-		ret = get_supported_channels(wpan);
+		ret = get_supported_channels_ext(wpan);
+		break;
+	case GET_EXTENDED_ADDR:
+		ret = get_extended_addr_handler(wpan);
+		break;
+	case GET_TX_POWER_LEVELS:
+		ret = get_tx_power_levels_handler(wpan);
+		break;
+	case GET_DEVICE_CAPABILITIES:
+		ret = get_device_capabilities_handler(wpan);
 		break;
 	default:
 		LOG_ERR("%x: Not handled for now", cmd);

@@ -5,6 +5,20 @@
 
 mainmenu "BeagleConnect wpanusb application"
 
+config WPANUSB_EXTENDED_API
+	bool "Enable extended WPANUSB API functions"
+	default y
+	help
+	  Enable extended API functions for hardware capability discovery,
+	  IEEE address reading, and device configuration.
+
+config WPANUSB_EXTENDED_API_TESTS
+	bool "Enable extended API testing framework"
+	depends on WPANUSB_EXTENDED_API
+	default y
+	help
+	  Enable test framework for validating extended API functions.
+
 config WPAN_TX_STACK_SIZE
 	int "Stack size for sending packets to host"
 	default 1024
